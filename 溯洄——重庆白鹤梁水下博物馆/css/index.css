@@ -1,0 +1,939 @@
+@charset "utf-8";
+/*重置浏览器的默认样式*/
+body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, img {margin:0; padding:0; border:0; list-style:none;margin: 0;}
+/*全局设置*/
+body{
+	font-family: 方正小标宋_GBK;
+	font-size: 14px;
+	background:url("../images/background.png") repeat;
+}
+/*语言栏（language）*/
+.language{ 
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	height:20px; 
+	padding:5px 0; 
+	text-align:right;
+	background-color: RGB(0,32,96);
+}
+.language p{
+	display: inline-block;
+	height:16px; 
+	font-size:14px;
+	color: #FFFFFF; 
+	margin-right: 5%;
+}
+.language p:hover{  
+	height:16px; 
+	font-size:14px;
+	color: #66ccff; 
+}
+
+/*导航栏*/
+.header {
+  position: absolute;
+  top:30px;
+	width:100%;
+  height:100px;
+}
+
+.logo {
+	position: absolute;
+	top: 10px;
+	left:50px;
+  margin-left:20px;
+	width:350px;
+	height:75px;
+}
+.header nav ul{
+    width:100%;
+    height:30px;
+    margin:0 auto;
+    position: relative;
+}
+.header nav ul li{
+    float: right; 
+    margin-right: 3%;
+    position: relative;
+}
+
+.header nav ul li a{
+    display: block;
+    height:90px;
+    line-height: 90px;
+    font-size: 20px;
+    color:#002060;
+	text-decoration: none;
+}
+.header nav ul li a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #66ccff;
+}
+.header nav ul li a span{margin:0 10px;}
+.header aside{
+    display: none;
+    width: 80px;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    left:auto;
+    right:0; 
+    top:90px;
+    z-index: 1500;
+    color:#fff;
+}
+.header aside ol{
+    width:80px;
+    padding: 10px;
+}
+.header aside ol li{
+	width:80px;
+    padding: 0px;
+    height:40px;
+    line-height: 30px;
+    cursor: pointer;
+    font-family: "宋体";
+    padding: 0 10px;
+}
+.header aside ol li.con{
+    font-size: 14px;
+	text-align: center;
+    font-family: "微软雅黑";
+}
+.header aside ol li:hover{
+    background: rgba(255, 255, 255, 0.2);
+    color:#fff;
+}
+.header nav ul li:hover aside
+{	
+	display: block;
+}
+
+/******************头图***********************/
+.banner {
+  position: absolute;
+  top:100px;
+  width: 100%; /* 设置宽度为100%，让其充满父容器 */
+  }
+  
+  .video-container {
+    width: 100%;
+    height: 1150px;
+    position: relative; /* 相对定位，为了让图片能够覆盖在视频上 */
+    overflow: hidden;
+  }
+
+  .video-container video {
+    position: relative;
+    top: 175px;
+    width: 100%; 
+    height: 600px;
+    display: block; /* 让视频元素以块级元素显示 */
+    object-fit: cover;
+  }
+  
+  .img1, .img2{
+    position: absolute; 
+    z-index: 1; 
+  }
+  
+  .img1 {
+    top: 0px; 
+    left: 0px; 
+    width:850px;
+    height: 1075px;
+    
+  }
+  
+  .img2 {
+    top: -25px; 
+    right: 200px; 
+    width:500px;
+    height:650px;
+    
+  }
+  .button {
+    position: absolute; 
+    bottom: 450px; 
+    right: 355px; 
+    background-color: white; 
+    color:#0056b3;
+    border: none;
+    padding: 15px 30px; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  }
+  
+  .button:hover {
+    background-color: #0056b3; 
+    color:white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+  }
+  
+/******************导览***********************/
+.daolan
+{   
+  position: absolute;
+  top:875px;
+  left: 10%;
+  width:80%;
+	height:750px;
+  background:url("../images/box.png") repeat-y;
+}
+.daolan .container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.laber {
+  position: relative; 
+  top: 225px;
+  left: 40px;
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  white-space: nowrap; 
+}
+
+.laber .title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap; 
+}
+
+.laber .openinfo {
+  position: absolute;
+  top: -25%;
+  transform: translateY(-45%); 
+  right:0px; 
+}
+
+.laber .openinfo img {
+  width: 700px; 
+  height: 375px; 
+}
+
+.laber .title img {
+  vertical-align: middle;
+  position: relative;
+  top: 50px;
+  left: 0px;
+  width:75px;
+  height: 75px;
+  margin-right: 10px;
+}
+
+.laber .title span {
+  position: relative;
+  top: 60px;
+  left: 0px;
+  font-size: 64px;
+  font-family: 演示新手书;
+  text-align: left;
+}
+.content {
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+.content ul {
+  position:absolute;
+  top: 400px;
+  left: -60px;
+  width: 100%; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.content li {
+  display: inline-block;
+  width: 13%; 
+  margin: 1%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.content li img {
+  width: 150px; 
+  height: 150px;
+  margin-bottom: 10px;
+}
+.content li img:hover {
+  border-radius:25px;
+  -webkit-box-shadow: #ffffff 0 0 25px;
+}
+.content li span {
+  font-size: 18px;
+  display: block; 
+}
+.telephone{
+  position:relative;
+  top: 0px;
+  left: 40px;
+  display: block;
+}
+
+/******************追溯历史********************/
+.history{
+  position: absolute;
+  top:1525px;
+  left: 10%;
+  width:80%;
+	height:750px;
+  background:url("../images/box.png") repeat-y;
+}
+.history .container {
+  position: relative;
+  top:0%;
+  width: 100%;
+  height:625px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.history .laber{
+  position: relative;
+  top: 0px;
+  left: 35%;
+}
+.history.laber .title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap; 
+}
+
+.history .laber .title img {
+  vertical-align: middle;
+  width:75px;
+  height: 75px;
+  margin-right: 10px;
+}
+
+.history .laber .title span {
+  font-size: 64px;
+  font-family: 演示新手书;
+  text-align: left;
+}
+
+.text-block, .image-block {
+  position:relative;
+  top:100px;
+  width: 30%;
+  margin-right: 2%;
+  float: left;
+  box-sizing: border-box; 
+}
+
+.text-block {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top:-100px;
+  left: 120px;
+  width: 400px;
+  height: 200px; 
+  z-index:1;
+}
+
+.decorative-rectangle {
+  position: relative;
+  top:145px;
+  left: 70px;
+  bottom: 0;
+  width: 300px;
+  height: 300px; 
+  background-color: #0542845d;
+}
+
+.text-block h2 {
+  color: #8b4513;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.text-block p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.image-block {
+  position: relative;
+  top: -225px;
+  left: 175px; 
+  width: 400px;
+  height: 300px;
+  margin-left: -47px; 
+  margin-bottom: -50px; 
+}
+
+.image-block img {
+  width: 325px;
+  height: 425px;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.image-block:last-child {
+  margin-right: 0;
+}
+
+
+/******************题刻掠影********************/
+.photoshow{
+	position: absolute;
+  top:2225px;
+  left: 10%;
+  width:80%;
+	height:950px;
+  background:url("../images/box.png") repeat-y;
+}
+.photoshow .container {
+  position: relative;
+  top:0%;
+  width: 100%;
+  height:1000px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.photoshow .laber {
+  position: relative;
+  top: 0px;
+  left: 35%;
+}
+
+.photoshow.laber .title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap; 
+}
+
+.photoshow .laber .title img {
+  vertical-align: middle;
+  width: 75px;
+  height: 75px;
+  margin-right: 10px;
+}
+
+.photoshow .laber .title span {
+  font-size: 64px;
+  font-family: 演示新手书;
+  text-align: left; 
+}
+
+
+.show {
+  position: relative;
+  top: 75px;
+  left:100px;
+  width: 1120px;
+  height: 630px;
+  overflow: hidden;
+}
+
+.show ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 600%;
+}
+
+.show ul li {
+  float: left;
+}
+
+.arrow-l,.arrow-r {
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 24px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-family: 'icomoon';
+  font-size: 18px;
+  z-index: 2;
+}
+
+.arrow-r {
+  right: 0;
+}
+
+.circle {
+  position: absolute;
+  bottom: 10px;
+  left: 500px;
+}
+
+.circle li {
+  float: left;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.current {
+  background-color: #fff;
+}
+
+
+/******************美丽传说********************/
+.legend{
+  position: absolute;
+  top: 3175px;
+  left: 10%;
+  width: 80%;
+  height: 600px;
+  background: url("../images/box.png") repeat-y;
+}
+
+.legend .container {
+  position: relative;
+  top: 0%;
+  width: 100%;
+  height: 1000px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.legend .laber {
+  position: relative;
+  top: -50px;
+  left: 35%;
+}
+
+.legend .laber .title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.legend .laber .title img {
+  vertical-align: middle;
+  width: 75px;
+  height: 75px;
+}
+
+.legend .laber .title span {
+  position: relative;
+  left: 0px;
+  font-size: 64px;
+  font-family: 演示新手书;
+  text-align: left;
+ 
+}
+.word {
+  position: relative;
+  top: 50px;
+  left: 0px;
+  font-size: 20px;
+}
+  
+table {
+  position: relative;
+  top: 0px;
+  left: -500px;
+  width: 1000px;
+  height: 500px;
+  margin: 20px 17px 5px 30px;
+  border-collapse: separate;
+  border-spacing: 100px 10px;
+ }
+ .legend1 {
+  border: 8px solid #ffffff;
+  -webkit-box-shadow: #ffffff 0 0 25px;
+  border-radius: 15px;
+  width: 175px;
+  height: 175px;
+  -webkit-transition-duration: 2s;
+ }
+ 
+ .legend1:hover {
+  -webkit-transition-property: -webkit-border-radius;
+  -webkit-border-radius: 50%;
+ }
+ 
+ .legend2 {
+  width: 175px;
+  height: 175px;
+  -webkit-transition-duration: 2s;
+ }
+ 
+ .img-box {
+  width: 175px;
+  height: 175px;
+  overflow: hidden;
+  border: 8px solid #ffffff;
+  -webkit-box-shadow: #ffffff 0 0 25px;
+  border-radius: 15px;
+ }
+ 
+ .legend2:hover {
+  display: block;
+  -webkit-transform: scale(2,2);
+  transform-origin: 0% 0%;
+ }
+ 
+ .legend3 {
+  border: 8px solid #ffffff;
+  -webkit-box-shadow: #ffffff 0 0 25px;
+  border-radius: 15px;
+  width: 175px;
+  height: 175px;
+  -webkit-transition-duration: 2s;
+ }
+ 
+ .legend3:hover {
+   -webkit-transform: rotate(45deg);
+ }
+ 
+ .legend4 {
+  border: 8px solid #ffffff;
+  -webkit-box-shadow: #ffffff 0 0 25px;
+  border-radius: 15px;
+  width: 175px;
+  height: 175px;
+  -webkit-transition-duration: 2s;
+ }
+ 
+ .legend4:hover {
+  -webkit-transition-property: -webkit-border-radius;
+  -webkit-border-radius: 50%;
+ }
+
+/******************跨界合作********************/
+.cooperate{
+  position: absolute;
+  top: 600px;
+  left: 0%;
+  width: 100%;
+  height: 1150px;
+  background: url("../images/box.png") repeat-y;
+}
+
+.cooperate .container {
+  position: relative;
+  top: 0%;
+  width: 100%;
+  height: 1000px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cooperate .laber {
+  position: relative;
+  top: 0px;
+  left:35%;
+}
+
+.cooperate .laber .title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.cooperate .laber .title img {
+  vertical-align: middle;
+  width: 75px;
+  height: 75px;
+  margin-right: 10px; 
+}
+
+.cooperate .laber .title span {
+  position: relative;
+  left: 5px;
+  font-size: 64px;
+  font-family: 演示新手书;
+  text-align: left;
+ 
+}
+.box
+{
+  position: relative;
+  top: 50px;
+  left: 7.5%;
+  width: 1120px;
+  height: 630px;
+  background: #000;
+  box-shadow: 0 30px 30px rgba(0,0,0,.5);
+}
+.box .imgBx
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.box .imgBx img
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.box:hover .imgBx img
+{
+  opacity: 0;
+}
+.box .content
+{
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  width: 80%;
+  height: 60px;
+  background: #fafafa;
+  transition: 0.5s;
+  overflow: hidden;
+
+  padding: 15px;
+  box-sizing: border-box;
+}
+.box:hover .content
+{
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+}
+.box .content h3
+{
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+}
+.box .content p
+{
+  margin: 10px 0 0;
+  padding: 0;
+  opacity: 0;
+  font-size: 16px;
+  line-height: 1.6em;
+  transition: 0.5s;
+  text-align:left;
+}
+.box .content a {
+  font-size: 16px;
+  color:#222;
+  text-decoration:none
+  
+}
+.box .content a:hover {
+  color:#00a6bc;
+}
+.box:hover .content p
+{
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+/***************加入我们*******************/
+.login{
+  position: absolute;
+  top: 900px;
+  left:0px;
+  width:100%;
+	height: 700px;
+  background:url("../images/box.png") repeat-y;
+}
+.login .container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login .laber {
+  position: relative; 
+  top: -25px;
+  left: 40px;
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  white-space: nowrap; 
+}
+
+.login .laber .title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap; 
+}
+.login ul{
+  position:relative;
+  left: 10%;
+}
+.login ul li{
+  display: inline-block;
+  margin-right: 150px;
+}
+.login ul li img{
+  position:relative;
+  left: 5%;
+  top:15px;
+  width: 300px;
+  height: 475px;
+}
+.login ul li img:hover {
+  border-radius:55px;
+  -webkit-box-shadow: #ffffff 0 0 25px;
+}
+.login form{
+  position: relative;
+  top:-100px;
+  left:0px;
+  width: 400px;
+  height: 250px;
+  opacity: 60%;
+  background-color: #E1E9EF;
+  padding: 120px 100px;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 120px auto;
+}
+
+.login .textinput{
+  height: 40px;
+  width: 300px;
+  padding: 0 35px;
+  border: none;
+  background: #F8F9F9;
+  font-size: 15px;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7), inset 0px 2px 5px #aaaaaa;
+  border-radius: 5px;
+  color:#002060;
+  margin-bottom: 25px;
+}
+
+.login input[type="submit"]{
+  width: 110px;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #C0C6CB;
+}
+
+.login a {
+  text-decoration: none;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}
+.login .button {
+  position: relative; 
+  bottom: -10px; 
+  right: 0px; 
+  background-color: white; 
+  color:#0056b3;
+  border: none;
+  padding: 15px 30px; 
+  border-radius: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  font-size: 16px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.login .button:hover {
+  background-color: #0056b3; 
+  color:white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+.login .smtxt{
+  position: relative; 
+  bottom: -50px; 
+  right: 0px; 
+
+}
+
+
+/***************版权信息栏********************/
+.footer{
+  position:absolute;
+  top: 1600px;
+	height: 300px;
+  width: 100%;
+	background-color:#081433;
+}
+
+.footer img{
+  position: relative;
+  top:85px;
+  left: 40%;
+  width: 300px;
+  height: 75px;
+}
+
+.subnav{
+  position:relative;
+  top: 110px;
+	text-align:center;
+	color:white;
+	font-size:14px;
+
+}
+
+.subnav a{
+	text-decoration:none;
+	color:#f0f1f1;
+	padding:0 5px;
+	font-size:16px;
+}
+
+.subnav a:hover{
+	color:skyblue;
+	text-decoration:underline;
+}
+
+.footer p{
+  position:relative;
+  top: 100px;
+	color:#888888;
+	text-align:center;
+	margin-top:30px;
+	font-size:12px;
+}
+
+.text{
+	height:45px;
+	width:100%;
+	position:absolute;
+	left:0;
+	bottom:0;
+	text-align:center;
+	line-height:45px;
+	font-size:12px;	
+	color:white;	
+	background:rgba(0, 0, 0,.3)
+}
+

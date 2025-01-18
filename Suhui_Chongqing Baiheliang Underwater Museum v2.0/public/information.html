@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人账户</title>
+<link href="./css/information.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!----------导航栏 begin------------------>
+<div class="language">
+    <p>·中文</p>
+    <p>·English</p>
+    <p>·日本語</p>
+    <p>·En français</p>
+</div>
+
+<div class="header">
+  <audio src="music/music.mp3" autoplay loop style="display:none;" controls></audio>
+	<img src="./images/logo.png" alt="Logo" class="logo">
+    <nav>
+		<ul>
+            <li>
+                <a href="author.html">
+                    <span>关于作者</span>
+                </a>
+            </li>
+            <li>
+                <a href="information.html">个人账户</a>
+            </li>
+            <li>
+                <a href="new.html">景区动态</a>
+                <aside>
+                    <ol class="zuo">
+                        <li class="con">保护研究</li>
+                        <li class="con">最新消息</li>
+                    </ol>
+                </aside>
+            </li>
+            <li>
+                <a href="exhibition.html">陈列展馆</a>
+                <aside>
+                    <ol class="zuo">
+                        <li class="con">岸边陈列馆</li>
+                        <li class="con">水下参观</li>
+                    </ol>
+                </aside>
+            </li>
+            <li>
+                <a href="index.html">网站主页</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!----------导航栏 end------------------>
+
+<!----------头图 begin------------------>
+<div class="banner">
+    <div class="video-container">
+      <img src="./images/banner3.png" alt="Logo" class="img1">
+      <img src="./images/welcome3.png" alt="Logo" class="img2">
+      <video src="./video/banner.mp4" autoplay loop muted></video>
+    </div>
+</div>
+<!----------头图 end------------------>
+
+<!----------侧边导航栏 begin--------------->
+<div class="sider">
+    <div class="container">
+        <table>
+              <tr>
+                <th>个人账户</th>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-container">
+                    <img src="./images/icon.png" alt="Logo">
+                    <a href="#">修改信息></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-container">
+                    <img src="./images/icon.png" alt="Logo">
+                    <a href="#">行程一览></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-container">
+                    <img src="./images/icon.png" alt="Logo">
+                    <a href="#">我的订单></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-container">
+                    <img src="./images/icon.png" alt="Logo">
+                    <a href="#">我的消息></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cell-container">
+                    <img src="./images/icon.png" alt="Logo">
+                    <a href="#">购买记录></a>
+                  </div>
+                </td>
+              </tr>
+          </table>
+    </div>
+</div>
+<!----------侧边导航栏 end--------------->
+
+<!----------修改信息 begin--------------->
+<div class="modify">
+  <div class="container">
+    <div class="laber">
+        <div class="title">
+            <img src="./images/point1.png" alt="icon">
+            <span>让我们更了解您</span>
+            <img src="./images/point2.png" alt="icon">
+        </div>
+    </div>
+    <form>
+      <div class="form-group">
+          <label>用户账号：</label>
+          <input type="text" id="username" name="username" value="12345678" readonly disabled>
+          <span>（不能修改，只能查看）</span>
+      </div>
+      <div class="form-group">
+        <label for="name">用户昵称：</label>
+        <input type="text" id="realname" name="realname" required pattern="[\u4E00-\u9FA5]+" title="只能输入汉字">
+        <span>（只能输入汉字）</span>
+    </div>
+    <div class="form-group">
+      <label for="signature">个性签名：</label>
+      <input type="text" id="signature" name="signature" pattern="[\u4E00-\u9FA5]+" title="只能输入汉字">
+      <span>（可选填写）</span>
+  </div>
+      <div class="form-group">
+          <label for="realname">真实姓名：</label>
+          <input type="text" id="realname" name="realname" required pattern="[\u4E00-\u9FA5]+" title="只能输入汉字">
+          <span>（必须填写，只能输入汉字）</span>
+      </div>
+      <div class="form-group">
+          <label for="realage">真实年龄：</label>
+          <input type="number" id="realage" name="realage" required min="0" max="125">
+          <span>（必须填写）</span>
+      </div>
+      <div class="form-group">
+        <label for="hometown">我的家乡：</label>
+        <select id="hometown" name="hometown" required>
+            <option value="">请选择</option>
+            <option value="北京">北京</option>
+            <option value="天津">天津</option>
+            <option value="上海">上海</option>
+            <option value="重庆">重庆</option>
+            <option value="河北">河北</option>
+            <option value="山西">山西</option>
+            <option value="辽宁">辽宁</option>
+            <option value="吉林">吉林</option>
+            <option value="黑龙江">黑龙江</option>
+            <option value="江苏">江苏</option>
+            <option value="浙江">浙江</option>
+            <option value="安徽">安徽</option>
+            <option value="福建">福建</option>
+            <option value="江西">江西</option>
+            <option value="山东">山东</option>
+            <option value="河南">河南</option>
+            <option value="湖北">湖北</option>
+            <option value="湖南">湖南</option>
+            <option value="广东">广东</option>
+            <option value="广西">广西</option>
+            <option value="海南">海南</option>
+            <option value="四川">四川</option>
+            <option value="贵州">贵州</option>
+            <option value="云南">云南</option>
+            <option value="陕西">陕西</option>
+            <option value="甘肃">甘肃</option>
+            <option value="青海">青海</option>
+            <option value="台湾">台湾</option>
+            <option value="内蒙古">内蒙古</option>
+            <option value="西藏">西藏</option>
+            <option value="宁夏">宁夏</option>
+            <option value="新疆">新疆</option>
+            <option value="香港">香港</option>
+            <option value="澳门">澳门</option>
+        </select>
+        <span>（必须填写）</span>
+    </div>
+      <div class="form-group">
+          <label for="birthdate">出生日期：</label>
+          <input type="date" id="birthdate" name="birthdate" required>
+          <span>（必须填写）</span>
+      </div>
+      <div class="form-group">
+        <label for="idnumber">身份证号：</label>
+        <input type="text" id="idnumber" name="idnumber" required pattern="^\d{18}" title="身份证号必须为18位数字">
+        <span>（必须填写）</span>
+    </div>
+    <div class="form-group">
+        <label for="phonenumber">手机号码：</label>
+        <input type="tel" id="phonenumber" name="phonenumber" required pattern="1[34578]\d{9}" title="手机号必须为11位数字，且以1开头">
+        <span>（必须填写）</span>
+    </div>
+      <div class="form-group">
+          <label for="email">电子邮箱：</label>
+          <input type="email" id="email" name="email" required>
+          <span>（必须填写）</span>
+      </div>
+      <div class="button-box">
+          <input type="submit" value="提交">
+          <input type="reset" value="重置">
+      </div>
+  </form>
+  </div>
+</div>
+<!----------修改信息 end--------------->
+
+<!----------留言板begin--------------->
+<div class="message_container">
+	<div id="comment-box">
+    <div class="laber">
+      <div class="title">
+          <img src="./images/point1.png" alt="icon">
+          <span>且开怀，诉衷肠</span>
+          <img src="./images/point2.png" alt="icon">
+      </div>
+  </div>
+		<div>
+      <div class="explain">游客昵称：</div>
+			<input type="text" id="name" placeholder="请输入您的游客昵称">
+		</div>
+		<div>
+      <div class="explain">您的留言：</div>
+			<textarea name = "" id="comment" cols="30" rows="10" placeholder="请发表您的我们的珍贵建议"></textarea>
+		</div>
+		<button id="btn-submit" >Publish</button>
+	</div>
+  <div class="list">
+    <div class="header">留言信息</div>
+    <div id="commentslist"></div>
+  </div>
+</div>
+<!----------留言板end----------------->
+
+<!----------波浪形过渡begin-------------->
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+  <defs>
+      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+  </defs>
+  <g class="parallax">
+      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(55,99,151,0.7)" />
+      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(55,99,151,0.5)" />
+      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(55,99,178,0.3)" />
+      <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(39, 71, 109)" />
+  </g>
+</svg>   
+<!----------波浪形过渡end-------------->
+
+<!----------版权信息栏 begin-------------->
+<div class="footer">
+  <img src="./images/app.png" alt="Apps">
+<div class="subnav">
+  <a href="#">百度百科</a>|
+  <a href="#">重庆三峡博物馆</a>|
+
+
+  <a href="#">长江生态</a>|
+  <a href="#">CCTV</a>|
+  <a href="#">重庆市涪陵区人民政府</a>|
+  <a href="#">乌江榨菜</a>
+</div>
+<p>@Copyright 2024 重庆师范大学 2023级计算机科学与技术56班谭祎 版权所有</p>
+</div>
+<!----------版权信息栏 end--------------->
+
+<script src="js/snow.js"></script>
+<script src="js/information.js"></script>
+</body>
+</html>

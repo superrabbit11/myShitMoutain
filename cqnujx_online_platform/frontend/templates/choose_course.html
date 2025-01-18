@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>学生选课</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* .label 盒子的样式 */
+        .label {
+            position: relative;
+            top: -50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container-fluid {
+            max-width: 800px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #0074d9;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .btn {
+            font-size: 1.3rem;
+            margin: 5px;
+            width: 250px;
+            padding: 10px;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-default {
+            background-color: #6c757d;
+            color: white;
+            width: 300px;
+            padding: 10px;
+        }
+
+        .btn-default:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站Logo和平台名称 -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 选课功能区域 -->
+    <div class="container-fluid">
+        <!-- 已选课程列表 -->
+        <h3>已选课程（点击取消）</h3>
+        <hr>
+
+        {% for item in choosed %}
+            <!-- 取消选课按钮 -->
+            <button onclick="goToUrl('/course/{{ item.id }}/{{ request.user.id }}/delete', '确认选择{{ item.name }}课程？\n{{ item.desc }}')" class="btn btn-success">
+                {{ item.name }}（成绩：{{ item.score }}）
+            </button>
+        {% endfor %}
+
+        <hr>
+
+        <!-- 未选课程列表 -->
+        <h3>未选的课程（点击选取）</h3>
+        <hr>
+
+        {% for item in unchoosed %}
+            <!-- 选取课程按钮 -->
+            <button onclick="goToUrl('/course/{{ item.id }}/{{ request.user.id }}/add', '确认选择{{ item.name }}课程？\n{{ item.desc }}')" class="btn btn-info">
+                {{ item.name }}
+            </button>
+        {% endfor %}
+
+        <br><br><br>
+        <!-- 返回按钮 -->
+        <button class="btn btn-default" onclick="goToUrl('/')">返回</button>
+    </div>
+
+    <!-- 页面底部版权信息 -->
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script src="/static/js/base.js"></script>
+    <script>
+        // 跳转到指定URL并提示确认信息
+        function goToUrl(url, message) {
+            if (confirm(message || "确认操作？")) {
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>聊天室</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #003366;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .main-container {
+            width: 60%;
+            background-color: rgba(255, 255, 255, 0.49);
+            border: 2px solid #0074d9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 居中对齐所有子元素 */
+            justify-content: center; /* 垂直居中 */
+            height: auto; /* 根据内容调整高度 */
+        }
+
+        .label {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00509e;
+        }
+
+        #chat-container {
+            width: 80%;
+            height: 300px;
+            background-color: #ffffff;
+            border: 2px solid #0074d9;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            align-items: center; /* 垂直居中消息 */
+        }
+
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .message.me {
+            background-color: #dff0d8;
+            align-self: flex-end;
+        }
+
+        .message.other {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            align-self: flex-start;
+        }
+
+        #chat-message-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #0074d9;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #chat-message-input:focus {
+            outline: none;
+            border-color: #00509e;
+            box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
+        }
+
+        #button-container {
+            display: flex;
+            justify-content: center; /* 水平居中按钮 */
+            width: 80%;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+            width: 48%; /* 控制按钮宽度 */
+        }
+
+        .button:hover {
+            background-color: #00509e;
+        }
+
+        .button:active {
+            background-color: #003366;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+<body>
+<!-- 欢迎语和logo -->
+<div class="label">
+    <div class="title">
+        <img src="{% static 'img/point1.png' %}" alt="icon">
+        <span>重师计信在线平台</span>
+        <img src="{% static 'img/point2.png' %}" alt="icon">
+    </div>
+</div>
+
+<div class="main-container">
+   <h1>欢迎来到{{ room_name }}聊天室！</h1>
+
+    <!-- 聊天内容区 -->
+    <div id="chat-container"></div>
+
+    <!-- 输入框 -->
+    <input id="chat-message-input" type="text" placeholder="输入消息">
+
+    <!-- 按钮区 -->
+    <div id="button-container">
+        <button id="exit-button" class="button">退出</button>
+        <button id="chat-message-submit" class="button">发送</button>
+    </div>
+</div>
+
+<!-- 数据传递 -->
+{{ room_name|json_script:"room-name" }}
+{{ user_name|json_script:"user-name" }}
+
+<footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+<script>
+    // 从模板中获取房间名称和用户名
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    const userName = JSON.parse(document.getElementById('user-name').textContent);
+
+    // 建立 WebSocket 连接
+    const wss_protocol = (window.location.protocol === 'https:') ? 'wss://' : 'ws://';
+    const chatSocket = new WebSocket(
+        wss_protocol + window.location.host + '/ws/chat/' + roomName + '/'
+    );
+
+    const chatContainer = document.querySelector('#chat-container');
+
+    // 滚动到底部
+    function scrollToBottom() {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // 显示消息
+    function displayMessage(message, isMe = false) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', isMe ? 'me' : 'other');
+        messageElement.textContent = message;
+        chatContainer.appendChild(messageElement);
+        scrollToBottom();
+    }
+
+    // WebSocket 事件处理
+    chatSocket.onopen = function() {
+        displayMessage(`[公告] 欢迎来到 ${roomName} 聊天室，请文明发言！`);
+    };
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const message = data.message;  // 消息内容
+        const isMe = data.sender === userName;
+
+        displayMessage(message, isMe);
+    };
+
+    chatSocket.onclose = function() {
+        displayMessage('[系统] 聊天连接已断开。');
+    };
+
+    // 发送消息
+    document.querySelector('#chat-message-submit').onclick = function() {
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+
+        if (message.trim()) {
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        }
+    };
+
+    // 回车发送消息
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    // 退出按钮功能
+    document.querySelector('#exit-button').onclick = function() {
+        window.history.back();
+    };
+</script>
+</body>
+</html>

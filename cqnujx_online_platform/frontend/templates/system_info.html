@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    {% if url %}
+    <!-- 如果存在URL，页面3秒后自动跳转到指定的URL -->
+    <meta http-equiv="refresh" content="3;url={{ url }}">
+    {% endif %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #003366;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* label 样式 */
+        .label {
+            position: relative;
+            top: -50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: normal; /* 标题不加粗 */
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: normal; /* 副标题不加粗 */
+        }
+
+        .success {
+            color: #66c4ff; /* 成功信息的文字颜色 */
+        }
+
+        .error {
+            color: #ff9f89; /* 错误信息的文字颜色 */
+        }
+
+        .btn {
+            margin: 10px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: normal;
+        }
+
+        .btn-warning {
+            background-color: #f6a21e; /* 淡雅的橘色 */
+            color: white;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #f08a1c; /* 橘色的hover效果 */
+        }
+
+        .btn-primary {
+            background-color: #00509e;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #003366;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站Logo区域 -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 根据消息类型显示成功或错误信息 -->
+    {% if msg == 'success' %}
+    <h1 class="success">{{ title }}</h1>
+    <h3 class="success">{{ content }}</h3>
+    {% else %}
+    <h1 class="error">{{ title }}</h1>
+    <h3 class="error">{{ content }}</h3>
+    {% endif %}
+
+    <div class="text-center">
+        <!-- 返回主页按钮 -->
+        <button onclick="goToUrl('/')" class="btn btn-warning">返回主页</button>
+        {% if url %}
+        <!-- 继续跳转到指定URL的按钮 -->
+        <button onclick="goToUrl('{{ url }}')" class="btn btn-primary">继续</button>
+        {% endif %}
+    </div>
+
+    <!-- 页脚信息 -->
+    <footer>© 2025 重师计信在线平台 Inc.</footer>
+    <footer>2023级计算机科学与技术5班谭祎</footer>
+
+    <script>
+        // 跳转到指定URL
+        function goToUrl(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

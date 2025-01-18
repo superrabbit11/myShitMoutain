@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>修改密码</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;  /* 使内容垂直排列 */
+            text-align: center;
+        }
+
+        /* .label 盒子的样式 */
+        .label {
+            margin-bottom: 30px;  /* 增加顶部的间距 */
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container-fluid {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            border: 2px solid #0074d9;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-control {
+            font-size: 1.1rem;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn {
+            font-size: 1.3rem;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .btn-default {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-default:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站Logo和平台名称 -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 修改密码表单 -->
+    <div class="container-fluid">
+        <h3>修改密码</h3>
+
+        <form method="post" role="form">
+            {% csrf_token %}
+            <!-- 密码输入框 -->
+            <div class="form-group">
+                <label for="password">要修改的密码</label>
+                <input type="password" class="form-control" name="password" placeholder="请输入新密码" required>
+            </div>
+
+            <!-- 提交按钮 -->
+            <button type="submit" class="btn btn-default">确定</button>
+        </form>
+    </div>
+
+    <!-- 页面底部版权信息 -->
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+</body>
+
+</html>

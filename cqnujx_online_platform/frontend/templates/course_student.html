@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>已选课的学生</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* .label 盒子的样式 */
+        .label {
+            position: relative;
+            top: -50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container-fluid {
+            max-width: 800px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #0074d9;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+        }
+
+        /* 表头样式 */
+        table th {
+            background-color: #f8f9fa;
+        }
+
+        /* 默认按钮样式 */
+        .btn-default {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        /* 鼠标悬停时按钮样式 */
+        .btn-default:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
+        /* 表格标题样式 */
+        caption {
+            caption-side: top;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站Logo和平台名称 -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 课程学生列表区域 -->
+    <div class="container-fluid">
+        <!-- 显示课程名称 -->
+        <h3>已选“{{ course.name }}”课的学生</h3>
+        <hr>
+        <!-- 学生列表表格 -->
+        <table class="table table-bordered">
+            <caption>学生列表</caption>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>学号</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in students %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.number }}</td>
+                    <td>
+                        <!-- 去打分按钮 -->
+                        <button onclick="goToUrl('/course/{{ course.id }}/{{ item.id }}/change-grade')" class="btn btn-default">去打分</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 页面底部版权信息 -->
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script src="/static/js/base.js"></script>
+    <script>
+        // 跳转到指定URL
+        function goToUrl(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

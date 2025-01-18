@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>录入学生成绩</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* .label 盒子的样式 */
+        .label {
+            position: relative;
+            top: -50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container-fluid {
+            max-width: 600px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #0074d9;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn-default {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-default:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站Logo和平台名称 -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+    <!-- 录入学生成绩表单区域 -->
+    <div class="container-fluid">
+        <h3>录入学生【{{ student }}】的《计算机网络》成绩</h3>
+        <hr>
+        <!-- 表单 -->
+        <form method="post" class="bs-example bs-example-form" role="form">
+            {% csrf_token %}
+            <!-- 学号选择框 -->
+            <div class="input-group">
+                <span class="input-group-addon">学号</span>
+                <select name="student_id" class="form-control" required>
+                    {% for student in students %}
+                        <option value="{{ student.id }}" {% if student.id == selected_student_id %}selected{% endif %}>
+                            {{ student.number }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- 成绩输入框 -->
+            <div class="input-group">
+                <span class="input-group-addon">成绩</span>
+                <input type="number" name="score" value="{{ score }}" class="form-control" required>
+            </div>
+            <!-- 提交按钮 -->
+            <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+        <!-- 返回按钮 -->
+        <button class="btn btn-default" onclick="goToUrl('/')">返回</button>
+    </div>
+    <!-- 页面底部版权信息 -->
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script src="/static/js/base.js"></script>
+    <script>
+        // 跳转到指定URL
+        function goToUrl(url) {
+            window.location.href = url;
+        }
+
+        // 提交表单时弹出确认框
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // 确认是否提交
+            if (confirm('确认提交成绩吗？')) {
+                alert('录入成功');
+                this.submit();
+            }
+        });
+    </script>
+</body>
+
+</html>

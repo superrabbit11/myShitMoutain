@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>用户登录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #003366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* 使得内容竖直排列 */
+        }
+        .laber {
+            position: relative; /* 改为相对定位 */
+            top: -50px; /* 调整距离登录框的距离 */
+            margin-bottom: 20px; /* 使得图标和登录框之间有点空隙 */
+        }
+
+        .laber .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .laber .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+        }
+
+        .laber .title span {
+            position: relative;
+            left: 0px;
+            font-size: 64px;
+            font-family: 演示新手书;
+            text-align: left;
+        }
+
+        .container-fluid {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 2px solid #0074d9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #00509e;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #003366;
+        }
+
+        .form-control {
+            border: 2px solid #0074d9;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            border-color: #00509e;
+            box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
+        }
+
+        .btn-info {
+            background-color: #0074d9;
+            border-color: #00509e;
+        }
+
+        .btn-info:hover {
+            background-color: #00509e;
+            border-color: #003366;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e;
+            border-color: #eea236;
+        }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+
+        .messages {
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .messages li {
+            color: #960707;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <!-- Logo部分，放在登录框正上方 -->
+    <div class="laber">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 登录框 -->
+    <div class="container-fluid">
+        <h3>用户登录</h3>
+        <hr>
+        <form role="form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-info">登录</button>
+                <button onclick="goToUrl('/user/register')" type="button" class="btn btn-warning">注册</button>
+            </div>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+<footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script src="/static/js/base.js"></script>
+</body>
+</html>

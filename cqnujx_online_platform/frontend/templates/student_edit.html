@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>修改个人信息</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* 标题部分的样式 */
+        .label {
+            position: relative;
+            top: -50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container-fluid {
+            max-width: 600px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #0074d9;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* 输入框样式 */
+        .input-group {
+            margin-bottom: 15px;
+            border: 2px solid #0074d9;
+            border-radius: 5px;
+        }
+
+        /* 提交按钮样式 */
+        button {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        /* 修改按钮样式 */
+        .btn-warning {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            color: #fff;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Logo部分 -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 修改个人信息表单 -->
+    <div class="container-fluid">
+        <h1>修改个人信息</h1>
+        <hr>
+        <div>
+            <h2>修改个人信息</h2>
+            <form method="post" class="bs-example bs-example-form" role="form">
+                {% csrf_token %}
+                <!-- 学号输入框，禁用状态 -->
+                <div class="input-group">
+                    <span class="input-group-addon">学号</span>
+                    <input type="text" disabled="disabled" value="{{ request.user.number }}" class="form-control" placeholder="">
+                </div>
+                <!-- 姓名输入框 -->
+                <div class="input-group">
+                    <span class="input-group-addon">姓名</span>
+                    <input type="text" name="name" value="{{ request.user.name }}" class="form-control" placeholder="请输入姓名">
+                </div>
+                <!-- 手机号输入框 -->
+                <div class="input-group">
+                    <span class="input-group-addon">手机</span>
+                    <input type="text" name="mobile" value="{{ request.user.mobile }}" class="form-control" placeholder="请输入手机号码">
+                </div>
+                <!-- 用户名输入框，禁用状态 -->
+                <div class="input-group">
+                    <span class="input-group-addon">用户名</span>
+                    <input type="text" disabled="disabled" value="{{ request.user.username }}" class="form-control" placeholder="">
+                </div>
+                <!-- 地址输入框 -->
+                <div class="input-group">
+                    <span class="input-group-addon">地址</span>
+                    <input type="text" name="address" value="{{ request.user.address }}" class="form-control" placeholder="请输入地址">
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-warning">提交修改</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script src="/static/js/base.js"></script>
+</body>
+
+</html>

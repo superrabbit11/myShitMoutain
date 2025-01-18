@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>晴川畅言</title>
+  <link rel="stylesheet" href="css/chat.css"  type="text/css">
+  <link rel="stylesheet" href="lib/jquery-mCustomScrollbar/css/jquery.mCustomScrollbar.min.css" />
+  <link rel="stylesheet" href="lib/jquery-emoji/css/jquery.emoji.css" />
+</head>
+
+<body>
+<!----------导航栏 begin------------------>
+<div class="language">
+  <p>·中文</p>
+  <p>·English</p>
+  <p>·日本語</p>
+  <p>·En français</p>
+</div>
+
+<div class="header">
+  <audio src="music/music.mp3" autoplay loop style="display:none;" controls></audio>
+  <img src="./images/logo.png" alt="Logo" class="logo">
+  <nav>
+      <ul>
+          <li>
+              <a href="author.html">
+                  <span>关于作者</span>
+              </a>
+          </li>
+          <li>
+              <a href="information.html">个人账户</a>
+          </li>
+          <li>
+              <a href="new.html">景区动态</a>
+              <aside>
+                  <ol class="zuo">
+                      <li class="con">保护研究</li>
+                      <li class="con">最新消息</li>
+                  </ol>
+              </aside>
+          </li>
+          <li>
+              <a href="exhibition.html">陈列展馆</a>
+              <aside>
+                  <ol class="zuo">
+                      <li class="con">岸边陈列馆</li>
+                      <li class="con">水下参观</li>
+                  </ol>
+              </aside>
+          </li>
+          <li>
+              <a href="index.html">网站主页</a>
+          </li>
+      </ul>
+  </nav>
+</div>
+<!----------导航栏 end------------------>
+
+<!----------头图 begin------------------>
+<div class="banner">
+  <div class="video-container">
+    <img src="./images/banner5.png" alt="Logo" class="img1">
+    <img src="./images/welcome5.png" alt="Logo" class="img2">
+    <video src="./video/banner.mp4" autoplay loop muted></video>
+  </div>
+</div>
+<!----------头图 end------------------>
+
+<!----------聊天室 begin--------------->
+<div class="laber-box">
+  <div class="laber">
+    <div class="title">
+        <img src="./images/point1.png" alt="icon">
+        <span>游目骋怀，畅叙幽情</span>
+        <img src="./images/point2.png" alt="icon">
+    </div>
+  </div>
+</div>
+<div class="contenter">
+  <div class="chat">
+    <!-- 登录界面 -->
+    <div class="login_box" style="display: block;">
+      <h3>游客身份自定义</h3>
+      <p>游客昵称</p>
+      <input type="text" placeholder="请输入游客昵称" id="username" />
+      <p>选择头像</p>
+      <ul class="avatar" id="login_avatar">
+        <li class="now"><img src="images/avatar01.jpg" alt="" /></li>
+        <li><img src="images/avatar02.jpg" alt="" /></li>
+        <li><img src="images/avatar03.jpg" alt="" /></li>
+        <li><img src="images/avatar04.jpg" alt="" /></li>
+        <li><img src="images/avatar05.jpg" alt="" /></li>
+        <li><img src="images/avatar06.jpg" alt="" /></li>
+        <li><img src="images/avatar07.jpg" alt="" /></li>
+        <li><img src="images/avatar08.jpg" alt="" /></li>
+        <li><img src="images/avatar09.jpg" alt="" /></li>
+        <li><img src="images/avatar10.jpg" alt="" /></li>
+      </ul>
+      <button class="ui-btn" id="loginBtn">登录</button>
+    </div>
+
+    <!-- 聊天主界面 -->
+    <div class="chat_container" style="display: none;">
+      <!-- 用户列表 -->
+      <div class="user-list">
+        <div class="header">
+          <div class="info">
+          </div>
+        </div>
+        <div class="title">
+          <h3>用户</h3>
+        </div>
+        <ul></ul>
+      </div>
+      <!-- 聊天窗口 -->
+      <div class="box">
+        <!-- 聊天窗口头部 -->
+        <div class="box-hd">
+          <h3>白鹤梁文化爱好者在线聊天室(<span id="userCount">0</span>)</h3>
+        </div>
+        <!-- 聊天内容 -->
+        <div class="box-bd"></div>
+        <!-- 聊天输入 -->
+        <div class="box-ft">
+          <div class="toolbar">
+            <a href="javascript:;" title="表情" class="face"></a>
+            <label for="file"></label>
+            <input type="file" id="file" style="display: none;">
+            </a>
+          </div>
+          <div class="content">
+            <div class="text" id="content" contenteditable></div>
+          </div>
+          <div class="action">
+            <span class="desc"> </span>
+            <a class="btn-send" id="btn-send" href="javascript:;">发送</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------聊天室 end--------------->
+
+<!----------波浪形过渡begin-------------->
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+  <defs>
+      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+  </defs>
+  <g class="parallax">
+      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(55,99,151,0.7)" />
+      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(55,99,151,0.5)" />
+      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(55,99,178,0.3)" />
+      <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(39, 71, 109)" />
+  </g>
+</svg>   
+<!----------波浪形过渡end-------------->
+
+<!----------版权信息栏 begin-------------->
+<div class="footer">
+  <img src="./images/app.png" alt="Apps">
+  <div class="subnav">
+      <a href="#">百度百科</a>|
+      <a href="#">重庆三峡博物馆</a>|
+      <a href="#">长江生态</a>|
+      <a href="#">CCTV</a>|
+      <a href="#">重庆市涪陵区人民政府</a>|
+      <a href="#">乌江榨菜</a>
+  </div>
+  <p>@Copyright 2024 重庆师范大学 2023级计算机科学与技术56班谭祎 版权所有</p>
+</div>
+<!----------版权信息栏 end-------------->
+
+<!-- 引入脚本 -->
+<script src="http://127.0.0.1:8000/socket.io/socket.io.js"></script>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="lib/jquery-mCustomScrollbar/script/jquery.mCustomScrollbar.min.js"></script>
+<script src="lib/jquery-emoji/js/jquery.emoji.min.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/snow.js"></script>
+
+</body>
+</html>

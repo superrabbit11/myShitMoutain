@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>聊天大厅</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #003366;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .label {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            border: 2px solid #0074d9;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 垂直居中内容 */
+        }
+
+        .container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00509e;
+        }
+
+        .container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        #room-name-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #0074d9;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #room-name-input:focus {
+            outline: none;
+            width: 80%;
+            border-color: #00509e;
+            box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #room-name-submit, #exit-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            width: 48%; /* 按钮占据容器宽度的48% */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #room-name-submit {
+            background-color: #0074d9;
+            color: white;
+            border: none;
+        }
+
+        #room-name-submit:hover {
+            background-color: #00509e;
+        }
+
+        #room-name-submit:active {
+            background-color: #003366;
+        }
+
+        #exit-btn {
+            background-color: #fcb147;
+            color: white;
+            border: none;
+        }
+
+        #exit-btn:hover {
+            background-color: #da8c1d;
+        }
+
+        #exit-btn:active {
+            background-color: #af7018;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+    <div class="container">
+        <h1>欢迎来到我们的在线聊天室！</h1>
+        <label for="room-name-input">请输入聊天室名称：</label>
+        <input id="room-name-input" type="text" placeholder="输入聊天室名称">
+
+        <div class="button-group">
+            <input id="room-name-submit" type="button" value="进入">
+            <button id="exit-btn" onclick="window.location.href='/'">退出</button>
+        </div>
+    </div>
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script>
+        // 自动聚焦聊天室名称输入框
+        document.querySelector('#room-name-input').focus();
+
+        // 监听回车键，点击"进入"按钮
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // 回车键
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        // 点击"进入"按钮时，检查聊天室名称是否为空
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            if (!roomName) {
+                alert("聊天室名称不能为空！");
+                return;
+            }
+            // 跳转到聊天室页面
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+</body>
+</html>

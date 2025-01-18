@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>学生成绩查询</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #003366;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* .label 盒子的样式 */
+        .label {
+            position: relative;
+            top: -50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label .title {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .label .title img {
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+            margin: 0 10px;
+        }
+
+        .label .title span {
+            font-size: 64px;
+            font-family: '演示新手书', sans-serif;
+            color: #003366;
+            font-weight: normal;
+        }
+
+        .container-fluid {
+            max-width: 700px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            border: 2px solid #0074d9;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00509e;
+            font-weight: normal;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group-addon {
+            font-weight: normal;
+            background-color: #0074d9;
+            color: white;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .form-control {
+            border: 2px solid #0074d9;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .form-control:focus {
+            border-color: #00509e;
+            box-shadow: 0 0 5px rgba(0, 80, 158, 0.5);
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px 20px;
+            font-size: 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: normal;
+        }
+
+        .btn-default {
+            background-color: #f8f9fa;
+            color: #333;
+            border: none;
+        }
+
+        .btn-default:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #555;
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 平台Logo -->
+    <div class="label">
+        <div class="title">
+            <img src="{% static 'img/point1.png' %}" alt="icon">
+            <span>重师计信在线平台</span>
+            <img src="{% static 'img/point2.png' %}" alt="icon">
+        </div>
+    </div>
+
+    <!-- 学生成绩查询部分 -->
+    <div class="container-fluid">
+        <h1>学生成绩查询</h1>
+        <hr>
+
+        <div>
+            <!-- 学号查询表单 -->
+            <form method="post" class="bs-example bs-example-form" role="form">
+                {% csrf_token %}
+                <div class="input-group">
+                    <span class="input-group-addon">学号</span>
+                    <input type="text" name="number" class="form-control" placeholder="学生学号">
+                </div>
+                <button class="btn btn-info" type="submit">查询</button>
+            </form>
+
+            <br>
+
+            <!-- 查询结果显示 -->
+            <form class="bs-example bs-example-form" role="form">
+                {% for item in all_score %}
+                <div class="input-group">
+                    <span class="input-group-addon">{{ item.course }}</span>
+                    <input type="text" disabled="disabled" value="{{ item.score }}" class="form-control" placeholder="">
+                </div>
+                {% empty %}
+                <!-- 如果没有成绩，显示提示信息 -->
+                <div class="input-group">
+                    <span class="input-group-addon">无成绩</span>
+                    <input type="text" disabled="disabled" value="未查询到成绩" class="form-control" placeholder="">
+                </div>
+                {% endfor %}
+            </form>
+
+            <br>
+
+            <!-- 返回按钮 -->
+            <button class="btn btn-default" onclick="goToUrl('/')">返回</button>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>© 2025 重师计信在线平台 Inc.<br>2023级计算机科学与技术5班谭祎</footer>
+
+    <script src="/static/js/base.js"></script>
+</body>
+
+</html>
